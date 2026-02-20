@@ -19,14 +19,9 @@ pipeline {
             }
         }
 
-        stage('Resultado') {
-            steps {
-                echo "Análisis enviado correctamente a SonarQube."
-                echo "Revisar en: http://localhost:9000/dashboard?id=Proyecto-CARBID-Backend"
-            }
-        }
     }
 }
+
 
 
 
