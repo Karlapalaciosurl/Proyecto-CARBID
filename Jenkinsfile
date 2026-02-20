@@ -8,7 +8,7 @@ pipeline {
             steps {
                 dir("Proyecto-CARBID/PROYECTO CARBID/backend") {
                     withSonarQubeEnv('sonarqube') {
-                        bat 'npx sonar-scanner -Dsonar.projectKey=PROYECTO-CARBID -Dsonar.sources=. -Dsonar.ws.timeout=120'
+                        bat 'npx sonar-scanner -Dsonar.projectKey=PROYECTO-CARBID -Dsonar.sources=. -Dsonar.javascript.file.suffixes=.js -Dsonar.ws.timeout=120'
                     }
                 }
             }
@@ -22,6 +22,7 @@ pipeline {
         }
     }
 }
+
 
 
 
