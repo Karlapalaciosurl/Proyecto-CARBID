@@ -8,7 +8,7 @@ pipeline {
             steps {
                 dir("Proyecto-CARBID/PROYECTO CARBID/backend") {
                     withSonarQubeEnv('sonarqube') {
-                        bat 'npx sonar-scanner'
+                        bat 'npx sonar-scanner -Dsonar.ws.timeout=60 -Dsonar.host.url=http://127.0.0.1:9000'
                     }
                 }
             }
@@ -22,6 +22,7 @@ pipeline {
         }
     }
 }
+
 
 
 
