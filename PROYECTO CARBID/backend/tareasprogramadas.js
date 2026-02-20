@@ -13,7 +13,6 @@ const ESTADOS = {
   FINALIZADA_CONFIRMADA: 5,
 };
 
-
 async function verificarYActualizarSubastas() {
   const ahora = new Date();
 
@@ -225,3 +224,4 @@ process.on("SIGTERM", () => {
 });
 
 export { verificarYActualizarSubastas as iniciarTareasProgramadas };
+
