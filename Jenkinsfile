@@ -1,8 +1,7 @@
 pipeline {
     agent any
-    // Agrega esto para que reconozca npx
     tools {
-        nodejs 'node' 
+        nodejs 'nodejs' 
     }
     stages {
         stage('Analisis de Backend') {
@@ -23,3 +22,4 @@ pipeline {
         }
     }
 }
+
