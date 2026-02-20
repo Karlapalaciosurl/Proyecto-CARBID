@@ -14,7 +14,7 @@ pipeline {
             steps {
                 dir("Proyecto-CARBID/PROYECTO CARBID/backend") {
                     withSonarQubeEnv('sonarqube') {
-                        bat 'npx sonar-scanner -Dsonar.projectKey=PROYECTO-CARBID -Dsonar.sources=.'
+                        bat 'npx sonar-scanner -Dsonar.projectKey=PROYECTO-CARBID -Dsonar.sources=. -Dsonar.javascript.file.suffixes=.js'
                     }
                 }
             }
@@ -29,6 +29,7 @@ pipeline {
         }
     }
 }
+
 
 
 
