@@ -1,34 +1,33 @@
 pipeline {
     agent any
     tools {
-        nodejs 'nodejs' 
+        nodejs 'nodejs'
     }
+
     stages {
-        stage('Descarga de Código') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Análisis de Backend') {
+        stage('SonarQube Analysis') {
             steps {
-                dir("Proyecto-CARBID/PROYECTO CARBID/backend") {
-                    withSonarQubeEnv('sonarqube') {
-                        bat 'npx sonar-scanner -Dsonar.projectKey=PROYECTO-CARBID -Dsonar.sources=. -Dsonar.javascript.file.suffixes=.js'
-                    }
+                withSonarQubeEnv('sonarqube') {
+                    bat 'npx sonar-scanner'
                 }
             }
         }
 
-        stage('Resultado del Análisis') {
+        stage('Resultado') {
             steps {
-                // Como el firewall bloquea el retorno, dejamos un aviso manual
-                echo "Análisis enviado con éxito a SonarQube."
-                echo "Revisar resultados en: http://localhost:9000/dashboard?id=PROYECTO-CARBID"
+                echo "Análisis enviado correctamente a SonarQube."
+                echo "Revisar en: http://localhost:9000/dashboard?id=Proyecto-CARBID-Backend"
             }
         }
     }
 }
+
 
 
 
