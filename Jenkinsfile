@@ -8,7 +8,7 @@ pipeline {
             steps {
                 dir("Proyecto-CARBID/PROYECTO CARBID/backend") {
                     withSonarQubeEnv('sonarqube') {
-                        sh 'npx sonar-scanner'
+                        bat 'npx sonar-scanner'
                     }
                 }
             }
@@ -22,5 +22,6 @@ pipeline {
         }
     }
 }
+
 
 
