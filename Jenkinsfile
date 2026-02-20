@@ -1,11 +1,15 @@
 pipeline {
     agent any
+    // Agrega esto para que reconozca npx
+    tools {
+        nodejs 'node' 
+    }
     stages {
-        stage('Análisis de Backend') {
+        stage('Analisis de Backend') {
             steps {
-                dir("Proyecto-CARBID/PROYECTO CARBID/backend") { 
-                    withSonarQubeEnv('sonar2') { 
-                        sh 'npx sonar-scanner' 
+                dir("Proyecto-CARBID/PROYECTO CARBID/backend") {
+                    withSonarQubeEnv('sonar2') {
+                        sh 'npx sonar-scanner'
                     }
                 }
             }
@@ -19,4 +23,3 @@ pipeline {
         }
     }
 }
-
