@@ -37,3 +37,5 @@ export const Notificacion = sequelize.define(
     tableName: "notificaciones",
   }
 );
+
+
