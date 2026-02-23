@@ -45,22 +45,18 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            office365ConnectorSend status: "¡ÉXITO! - Build #${env.BUILD_NUMBER}", 
-            webhookUrl: "https://default0f78549d3eec43afb56a6f7b042d6c.9a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/4868894c1a1648dca3ca5c60ab120938/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=l8mp1VPAEbGhLl6KmMFjgB7-6gZpOfxVzMLveJlznJc",
-            color: "00FF00",
-            message: "La auditoría y SonarQube pasaron correctamente."
-        }
-        failure {
-            // Notificación automática si falla seguridad o calidad
-            office365ConnectorSend status: "¡FALLÓ! - Build #${env.BUILD_NUMBER}", 
-            webhookUrl: "https://default0f78549d3eec43afb56a6f7b042d6c.9a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/4868894c1a1648dca3ca5c60ab120938/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=l8mp1VPAEbGhLl6KmMFjgB7-6gZpOfxVzMLveJlznJc",
-            color: "FF0000",
-            message: "El build falló. Revisa los logs de npm audit o SonarQube."
-        }
+post {
+    always {
+        office365ConnectorSend(
+            webhookUrl: "TU_WEBHOOK",
+            status: currentBuild.currentResult,
+            color: currentBuild.currentResult == 'SUCCESS' ? "00FF00" : "FF0000",
+            message: "Resultado del pipeline: ${currentBuild.currentResult}"
+        )
     }
 }
+}
+
 
 
 
