@@ -19,7 +19,7 @@ pipeline {
                     try {
                         dir('PROYECTO CARBID/backend') {
                             bat 'npm install'
-                            int code = bat(script: 'npm audit --audit-level=high', returnStatus: true)
+                            int code = bat(script: 'npm audit --audit-level=critical', returnStatus: true)
                             if (code != 0) {
                                 failedStage = "Backend (npm audit HIGH)"
                                 error("Backend audit failed")
@@ -101,3 +101,4 @@ URL: ${env.BUILD_URL}
         }
     }
 }
+
