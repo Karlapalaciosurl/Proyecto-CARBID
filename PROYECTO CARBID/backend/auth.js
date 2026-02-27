@@ -6,7 +6,6 @@ export function firmarJWT(payload) {
   return jwt.sign(payload, SECRET, { expiresIn: "24h" });
 }
 
-
 export function verificarToken(req, res, next) {
   const header = req.headers.authorization || "";
   const token = header.startsWith("Bearer ") ? header.slice(7) : null;
@@ -21,6 +20,7 @@ export function verificarToken(req, res, next) {
     return res.status(401).json({ message: "Token inválido o expirado" });
   }
 }
+
 
 
 
